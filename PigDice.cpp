@@ -16,11 +16,11 @@ struct GameState {
 
 class Die {
 private:
-    int m_value;
+    int m_dieValue;
     int m_numOfSides;
 public:
     Die() { // default constructor
-        m_value = 0;
+        m_dieValue = 0; // can replace with setValue()
         m_numOfSides = 6;
     }
     void set_numOfSides(int numOfSides) {
@@ -38,18 +38,18 @@ public:
                 m_numOfSides = 6;
         }
     }
-    int getNumOfSides() {
+    int get_numOfSides() {
         return m_numOfSides;
     }
     void setValue() {
         std::random_device rd;
         std::mt19937 gen(rd());
         std::uniform_int_distribution<int> dis(1, m_numOfSides);
-        m_value = dis(gen);
+        m_dieValue = dis(gen);
     }
     int getValue() {
         // rules for accessing the data
-        return m_value;
+        return m_dieValue;
     }
 };
 
@@ -68,9 +68,6 @@ void hold(GameState &g);
 
 int main() {
     GameState my_game; // instantiate a GameState object
-    Die myDie;
-    myDie.setValue();
-    myDie.getValue();
     display_rules(); // call the display_rules function
     play_game(my_game); // call the play_game function and pass the GameState object
     return 0;
@@ -113,17 +110,19 @@ void take_turn(GameState &g) {
 }
 
 void roll(GameState &g) {
-    srand(time(NULL));
-    int die = rand() % 6 + 1;
-    std::cout << "Die: " << die;
+    /*srand(time(NULL));
+    int die = rand() % 6 + 1;*/
+    Die d;
+    d.setValue();
+    std::cout << "Die: " << d.getValue() << std::endl;
 
-    if (die == 1) {
+    if (d.getValue() == 1) {
         std::cout << "\nTurn over. No score." << std::endl;
         g.score_this_turn = 0;
         g.turn_over = true;
     }
     else {
-        g.score_this_turn += die;
+        g.score_this_turn += d.getValue();
         std::cout << " - Running score this turn: " << g.score_this_turn << std::endl;
     }
 }
