@@ -1,8 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <ctime>
-#include <random>
-
+#include "DIE.h"
 // Build your solution starting from this code.
 
 struct GameState {
@@ -12,45 +11,6 @@ struct GameState {
     int score_this_turn = 0;
     bool game_over = false;
     bool turn_over = false;
-};
-
-class Die {
-private:
-    int m_dieValue;
-    int m_numOfSides;
-public:
-    Die() { // default constructor
-        m_dieValue = 0; // can replace with setValue()
-        m_numOfSides = 6;
-    }
-    void set_numOfSides(int numOfSides) {
-        switch (numOfSides) {
-            case 4:
-                m_numOfSides = 4;
-                break;
-            case 6:
-                m_numOfSides = 6;
-                break;
-            case 8:
-                m_numOfSides = 8;
-                break;
-            default:
-                m_numOfSides = 6;
-        }
-    }
-    int get_numOfSides() {
-        return m_numOfSides;
-    }
-    void setValue() {
-        std::random_device rd;
-        std::mt19937 gen(rd());
-        std::uniform_int_distribution<int> dis(1, m_numOfSides);
-        m_dieValue = dis(gen);
-    }
-    int getValue() {
-        // rules for accessing the data
-        return m_dieValue;
-    }
 };
 
 void display_rules() {
