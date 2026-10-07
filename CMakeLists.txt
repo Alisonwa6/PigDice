@@ -8,4 +8,8 @@ include_directories(.)
 add_executable(PigDice
         DIE.cpp
         DIE.h
-        PigDice.cpp)
+        PigDice.cpp
+        TURN.cpp
+        TURN.h
+        PDGAME.cpp
+        PDGAME.h)

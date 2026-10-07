@@ -73,7 +73,7 @@ void roll(GameState &g) {
     /*srand(time(NULL));
     int die = rand() % 6 + 1;*/
     Die d;
-    d.setValue();
+    d.rollDie();
     std::cout << "Die: " << d.getValue() << std::endl;
 
     if (d.getValue() == 1) {
