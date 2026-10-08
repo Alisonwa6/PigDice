@@ -17,7 +17,7 @@ class Turn {
         int getScoreThisTurn() const;
         void resetTurnOver();
         int getTurnCount() const;
-        void resetGameOver();
+        void resetScoreThisTurn();
     private:
         void roll();
 };

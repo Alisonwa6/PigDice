@@ -26,7 +26,7 @@ void PDGame::playGame(){
         }
         else {
             m_myTurn.resetTurnOver();
-            m_myTurn.resetGameOver();
+            m_myTurn.resetScoreThisTurn();
         }
     }
     std::cout << "\nYou finished with a final score of " << m_gameScore << " in " << m_myTurn.getTurnCount() - 1 << " turns!" << std::endl;

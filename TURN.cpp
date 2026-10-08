@@ -44,7 +44,7 @@ int Turn::getTurnCount() const {
     return m_turnCount;
 }
 
-void Turn::resetGameOver() {
+void Turn::resetScoreThisTurn() {
     if (m_scoreThisTurn <= 20) {
         m_scoreThisTurn = 0;
     }
