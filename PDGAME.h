@@ -2,15 +2,15 @@
 #define PIGDICE_PDGAME_H
 #include "TURN.h"
 
-class PDGAME {
+class PDGame {
     private:
         Turn m_myTurn;
         bool m_gameOver;
         int m_gameScore;
     public:
-        PDGAME();
+        PDGame();
     private:
-        void displayRules();
+        static void displayRules();
         void playGame();
 };
 

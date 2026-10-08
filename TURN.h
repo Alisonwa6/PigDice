@@ -3,7 +3,7 @@
 #include "DIE.h"
 
 
-class TURN {
+class Turn {
     private:
         int m_turnCount;
         int m_scoreThisTurn;
@@ -14,10 +14,12 @@ class TURN {
         Turn();
         //Turn(&);
         void takeTurn();
-        int getScoreThisTurn();
+        int getScoreThisTurn() const;
         void resetTurnOver();
-        int getTurnCount();
+        int getTurnCount() const;
         void resetGameOver();
+    private:
+        void roll();
 };
 
 

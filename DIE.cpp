@@ -10,7 +10,6 @@ void Die::rollDie() {
     std::uniform_int_distribution<int> dis(1, 6);
     m_dieValue = dis(gen);
 }
-int Die::getDieValue() const {
-    // rules for accessing the data
+int Die::getDieValue(){
     return m_dieValue;
 }

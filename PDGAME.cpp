@@ -1,1 +1,34 @@
 #include "PDGAME.h"
+#include <iostream>
+
+PDGame::PDGame() {
+    m_gameOver = false;
+    m_gameScore = 0;
+    playGame();
+}
+
+void PDGame::displayRules() {
+    std::cout << "Let's Play PIG Dice!" << std::endl << std::endl;
+    std::cout << "* See how many turns it takes you to get to 20 points." << std::endl;
+    std::cout << "* Turn ends when you hold or roll a 1." << std::endl;
+    std::cout << "* If you roll a 1, you lose all points for the turn." << std::endl;
+    std::cout << "* If you hold, you bank all points for the turn to the game score." << std::endl;
+}
+
+void PDGame::playGame(){
+    displayRules();
+    while (!m_gameOver) {
+        std::cout << "\nTURN " << m_myTurn.getTurnCount() << " - Game Score: " << m_gameScore << std::endl;
+        m_myTurn.takeTurn();
+        m_gameScore += m_myTurn.getScoreThisTurn();
+        if (m_gameScore >= 20) {
+            m_gameOver = true;
+        }
+        else {
+            m_myTurn.resetTurnOver();
+            m_myTurn.resetGameOver();
+        }
+    }
+    std::cout << "\nYou finished with a final score of " << m_gameScore << " in " << m_myTurn.getTurnCount() - 1 << " turns!" << std::endl;
+    std::cout << "Thanks for playing PIG Dice!" << std::endl;
+}

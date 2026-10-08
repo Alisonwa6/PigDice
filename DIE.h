@@ -7,7 +7,7 @@ private:
 public:
     Die();
     void rollDie();
-    int getDieValue() const;
+    int getDieValue();
 };
 
 #endif //PIGDICE_DIE_H
