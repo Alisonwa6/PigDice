@@ -1,21 +1,24 @@
 //
 // Created by awalt on 10/6/2026.
 //
-
-#include "TURN.h"
-
 #include <iostream>
+#include "TURN.h"
+#include "PDGAME.h" // 7.
+
 
 Turn::Turn() {
-    m_turnCount = 1;
+    m_turnCount = 0;
     m_scoreThisTurn = 0;
     m_turnOver = false;
     m_choice = 't';
 }
+void Turn::setParentGame(PDGame *parentGame) { // 6.
+    m_parentGame = parentGame;
+}
 
 void Turn::takeTurn() {
     m_turnCount ++;
-
+    std::cout << "\nTURN " << getTurnCount() << " - Game Score: " << m_parentGame->getGameScore() << std::endl; // 9.
     while (!m_turnOver) {
         std::cout << "roll or hold? (r/h):  ";
         std::cin >> m_choice;

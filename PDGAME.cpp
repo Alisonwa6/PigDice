@@ -4,7 +4,11 @@
 PDGame::PDGame() {
     m_gameOver = false;
     m_gameScore = 0;
+    m_myTurn.setParentGame(this); // 7.
     playGame();
+}
+int PDGame::getGameScore() const { // 2.
+    return m_gameScore;
 }
 
 void PDGame::displayRules() {
@@ -18,7 +22,6 @@ void PDGame::displayRules() {
 void PDGame::playGame(){
     displayRules();
     while (!m_gameOver) {
-        std::cout << "\nTURN " << m_myTurn.getTurnCount() << " - Game Score: " << m_gameScore << std::endl;
         m_myTurn.takeTurn();
         m_gameScore += m_myTurn.getScoreThisTurn();
         if (m_gameScore >= 20) {
@@ -29,6 +32,6 @@ void PDGame::playGame(){
             m_myTurn.resetScoreThisTurn();
         }
     }
-    std::cout << "\nYou finished with a final score of " << m_gameScore << " in " << m_myTurn.getTurnCount() - 1 << " turns!" << std::endl;
+    std::cout << "\nYou finished with a final score of " << m_gameScore << " in " << m_myTurn.getTurnCount() << " turns!" << std::endl;
     std::cout << "Thanks for playing PIG Dice!" << std::endl;
 }

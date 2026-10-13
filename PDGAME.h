@@ -9,6 +9,7 @@ class PDGame {
         int m_gameScore;
     public:
         PDGame();
+        int getGameScore() const; // 1.
     private:
         static void displayRules();
         void playGame();
